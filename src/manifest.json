@@ -1,0 +1,28 @@
+{
+    "manifest_version": 3,
+    "name": "One Line Gmail",
+    "short_name": "one-sentence-gmail",
+    "version": "1.1",
+    "author": "Jingtao Wang <onesentencegmail@jingtao.io>",
+
+    "description": "Summary however long the email into only 1 sentence. No more time wasted!",
+    "content_scripts": [
+        {
+            "matches": [ "*://mail.google.com/*" ],
+            "js": [
+                "extensionInjector.js"
+            ],
+            "run_at": "document_start"
+        }
+    ],
+
+    "web_accessible_resources": [{
+        "resources": [
+            "gmailJsLoader.js",
+            "extension.js"
+        ],
+        "matches": [ "*://mail.google.com/*" ]
+    }],
+    "host_permissions": ["https://*.openai.com/"],
+    "permissions": ["storage"]
+}
