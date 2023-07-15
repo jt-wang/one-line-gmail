@@ -1,19 +1,18 @@
 {
   "name": "gmailjs-node-boilerplate",
   "version": "1.1.0",
-  "description": "",
-  "main": "",
   "scripts": {
-    "deps": "npm install",
-    "stage": "mkdir dist || echo Dist already exists.",
-    "_bundle": "esbuild src/gmailJsLoader.js src/extension.js --outdir=dist/ --bundle --sourcemap --target=es6",
-    "devbuild": "cp ../gmail.js/src/gmail.js node_modules/gmail-js/src/ && npm run build",
-    "_build": "npm run stage && npm run bundle",
-    "build": "node build.mjs"
+    "build": "node build.mjs",
+    "lint": "eslint --ext .js,.mjs,.jsx .",
+    "lint:fix": "eslint --ext .js,.mjs,.jsx . --fix",
+    "prepare": "husky install",
+    "watch": "chokidar src -c 'npm run build'"
   },
   "author": "Jostein kjønigsen",
   "license": "ISC",
   "dependencies": {
+    "@geist-ui/core": "^2.3.8",
+    "@primer/octicons-react": "^19.4.0",
     "chatgpt": "^5.2.5",
     "events": "^3.3.0",
     "eventsource-parser": "^0.0.5",
@@ -22,11 +21,17 @@
     "html-to-text": "^9.0.5",
     "jquery": "^3.6.1",
     "lodash-es": "^4.17.21",
+    "preact": "^10.16.0",
+    "react": "npm:@preact/compat@^17.1.2",
+    "react-dom": "npm:@preact/compat@^17.1.2",
+    "swr": "^2.2.0",
     "uuid": "^9.0.0"
   },
   "devDependencies": {
+    "@preact/compat": "^17.1.2",
     "@types/fs-extra": "^9.0.13",
     "@types/lodash-es": "^4.17.6",
+    "@types/react-dom": "^18.2.7",
     "@types/uuid": "^9.0.0",
     "@types/webextension-polyfill": "^0.9.2",
     "@typescript-eslint/eslint-plugin": "^5.47.0",
@@ -52,5 +57,11 @@
     "tailwindcss": "^3.2.4",
     "typescript": "^4.9.4",
     "webextension-polyfill": "^0.10.0"
+  },
+  "lint-staged": {
+    "**/*.{js,jsx,ts,tsx,mjs}": [
+      "npx prettier --write",
+      "npx eslint --fix"
+    ]
   }
 }

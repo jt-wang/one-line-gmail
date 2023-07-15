@@ -21,6 +21,9 @@ async function runEsbuild() {
       'src/extension.js',
       'src/extensionInjector.js',
       'src/gmailJsLoader.js',
+      'src/options/index.tsx',
+      'src/popup/index.tsx',
+      'src/background/index.ts',
     ],
     bundle: true,
     outdir: outdir,
@@ -74,6 +77,15 @@ async function build() {
     { src: 'build/extension.js', dst: 'extension.js' },
     { src: 'build/extensionInjector.js', dst: 'extensionInjector.js' },
     { src: 'build/gmailJsLoader.js', dst: 'gmailJsLoader.js' },
+    { src: 'build/options/index.js', dst: 'options.js' },
+    { src: 'build/options/index.css', dst: 'options.css' },
+    { src: 'src/options/index.html', dst: 'options.html' },
+    { src: 'build/popup/index.js', dst: 'popup.js' },
+    { src: 'build/popup/index.css', dst: 'popup.css' },
+    { src: 'src/popup/index.html', dst: 'popup.html' },
+    { src: 'src/logo.png', dst: 'logo.png' },
+    { src: 'src/browser-polyfill.min.js', dst: 'browser-polyfill.min.js' },
+    { src: 'build/background/index.js', dst: 'background.js' },
   ]
 
   // chromium
