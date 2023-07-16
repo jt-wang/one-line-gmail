@@ -18,7 +18,7 @@ async function deleteOldDir() {
 async function runEsbuild() {
   await esbuild.build({
     entryPoints: [
-      'src/extension.js',
+      'src/extension.jsx',
       'src/extensionInjector.js',
       'src/gmailJsLoader.js',
       'src/options/index.tsx',
